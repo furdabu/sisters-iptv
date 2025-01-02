@@ -4,7 +4,7 @@ import http from "http";
 
 const app = express();
 const port = 10121;
-const MIRAKURUN_SERVICE_URL = "http://192.168.100.3:40772/api/services/3273901048/stream?decode=1";
+const MIRAKURUN_SERVICE_URL = "http://192.168.100.3:40772/api/services/3273701032/stream?decode=1";
 // discover.json
 app.get('/discover.json', (req, res) => {
   res.json({
@@ -54,7 +54,7 @@ app.get("/auto/v1", (req, res) => {
     "-"
   ];
   console.log("[tsreadex] spawn tsreadex", tsreadexArgs.join(" "));
-  const tsreadex = spawn("tsreadex", tsreadexArgs);
+  const tsreadex = spawn("./thirdparty/tsreadex", tsreadexArgs);
 
   // --- 2) FFmpeg (MPEG-TSコンテナ + H.264 + AC3音声) ---
   //   -c:v libx264   : ソフトウェア H.264 エンコード
@@ -68,11 +68,11 @@ app.get("/auto/v1", (req, res) => {
     "-i", "pipe:0",
 
     // 映像: H.264
-    "-c:v", "hevc_nvenc",
+    "-c:v", "libx264",
     "-profile:v", "main",
     "-level:v", "4.0",
     "-preset", "veryfast",
-    "-vf", "scale=-2:360",
+    // "-vf", "scale=-2:720",
 
     // 音声: AC3
     "-c:a", "ac3",
