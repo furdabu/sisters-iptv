@@ -1,0 +1,12 @@
+{
+  "name": "sisters",
+  "packageManager": "yarn@4.6.0",
+  "dependencies": {
+    "@types/express": "^5.0.0",
+    "express": "^4.21.2",
+    "ts-node": "^10.9.2"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.2"
+  }
+}
