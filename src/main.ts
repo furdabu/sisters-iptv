@@ -3,7 +3,7 @@ import { spawn } from "child_process";
 import http from "http";
 
 const app = express();
-const port = 8888;
+const port = 10121;
 const MIRAKURUN_SERVICE_URL = "http://192.168.100.3:40772/api/services/3273901048/stream?decode=1";
 // discover.json
 app.get('/discover.json', (req, res) => {
@@ -68,7 +68,7 @@ app.get("/auto/v1", (req, res) => {
     "-i", "pipe:0",
 
     // 映像: H.264
-    "-c:v", "libx264",
+    "-c:v", "hevc_nvenc",
     "-profile:v", "main",
     "-level:v", "4.0",
     "-preset", "veryfast",

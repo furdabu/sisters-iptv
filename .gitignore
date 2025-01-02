@@ -13,3 +13,5 @@ node_modules
 
 #!.yarn/cache
 .pnp.*
+thirdparty/tsreadex
+channels.json
